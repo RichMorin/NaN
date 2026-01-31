@@ -1,0 +1,11 @@
+digraph NaN {
+  rankdir=LR;
+  node [shape=box, style=rounded];
+
+  Source [label="DOT Source\n(diagrams/dot)"];
+  Render [label="GitHub Action\n(Graphviz dot)"];
+  Output [label="SVG Output\n(diagrams/svg)"];
+  Page [label="Jekyll Page\n(docs)"];
+
+  Source -> Render -> Output -> Page;
+}
