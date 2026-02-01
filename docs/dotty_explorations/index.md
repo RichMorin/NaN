@@ -28,17 +28,17 @@ that it recognized a coffee cup at a particular point in the image;
 the Patch Grabber would then grab a patch of pixels at that location
 and send it to the Sensor Module to be distributed to Monty's Learning Modules.
 
-![Top diagram](../diagrams/svg/top.svg)
+![Top diagram]({{ "/diagrams/svg/top.svg" | relative_url }})
 
 This diagram extends the Patch Grabber data flow.
 The idea is that the Temporal Manager would handle when the image was seen
 and the Transform Manager would perform desired transformations:
 
-![Bottom diagram](../diagrams/svg/bottom.svg)
+![Bottom diagram]({{ "/diagrams/svg/bottom.svg" | relative_url }})
 
 Putting it all together, here is the full diagram:
 
-![Full diagram](../diagrams/svg/example.svg)
+![Full diagram]({{ "/diagrams/svg/example.svg" | relative_url }})
 
 ## Discussion
 
