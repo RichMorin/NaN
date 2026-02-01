@@ -26,8 +26,8 @@ build: gen
 
 # Watch docs and rebuild generated site on changes
 watch-build:
-	@./scripts/watch-build.sh
+	@./scripts/watch-build.sh 2>&1 | tee -a logs/watch-build.log
 
 # Serve generated site (static)
 serve:
-	@bundle exec jekyll serve -s _site/gen/docs -d _site/site --watch --livereload --port 4000
+	@bundle exec jekyll serve -s _site/gen/docs -d _site/site --watch --livereload --port 4000 2>&1 | tee -a logs/serve.log
