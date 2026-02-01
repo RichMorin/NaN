@@ -30,4 +30,4 @@ watch-build:
 
 # Serve generated site (static)
 serve:
-	@bundle exec jekyll serve -s _site/gen/docs -d _site/site --watch --livereload --port 4000 2>&1 | tee -a logs/serve.log
+	@bundle exec jekyll serve -s _site/gen/docs -d _site/site --baseurl "" --watch --livereload --port 4000 2>&1 | tee -a logs/serve.log
