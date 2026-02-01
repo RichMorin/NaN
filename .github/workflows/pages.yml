@@ -1,8 +1,9 @@
-name: Build and deploy Pages
+name: Build and Deploy Pages
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -21,31 +22,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
 
       - name: Install Graphviz
         run: sudo apt-get update && sudo apt-get install -y graphviz
 
-      - name: Render DOT to SVG
-        shell: bash
-        run: |
-          shopt -s nullglob
-          while IFS= read -r -d '' f; do
-            rel="${f#docs/diagrams/dot/}"
-            out="docs/diagrams/svg/${rel%.dot}.svg"
-            mkdir -p "$(dirname "$out")"
-            dot -Tsvg "$f" -o "$out"
-          done < <(find docs/diagrams/dot -name '*.dot' -print0)
+      - name: Build site
+        run: make build
 
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./docs
-          destination: ./_site
-
-      - name: Upload artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site/site
 
   deploy:
     environment:

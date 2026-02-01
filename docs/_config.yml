@@ -3,3 +3,8 @@
 title: "NaN — Notes and Notions"
 markdown: kramdown
 theme: minima
+
+# Header nav order (higher-level pages only)
+header_pages:
+  - index.md
+  - AI_assisted_development/index.md

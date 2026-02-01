@@ -1,11 +1,33 @@
-digraph NaN {
-  rankdir=LR;
-  node [shape=box, style=rounded];
+digraph Full {
+  graph [layout=neato, splines=true, bgcolor="transparent", fontname="Helvetica", overlap=false];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=12, color="#2c2c2c", fillcolor="#f2f7ff", pin=true];
 
-  Source [label="DOT Source\n(diagrams/dot)"];
-  Render [label="GitHub Action\n(Graphviz dot)"];
-  Output [label="SVG Output\n(diagrams/svg)"];
-  Page [label="Jekyll Page\n(docs)"];
+  // Second diagram baseline
+  AT  [label="Attention\nTracker", pos="340,270!"];
 
-  Source -> Render -> Output -> Page;
+  SH  [label="Sensor\nHardware", pos="100,200!"];
+  IG1 [label="Image\nGrabber", pos="260,200!"];
+  TM1 [label="Temporal\nManager", pos="420,200!"];
+  TM2 [label="Transform\nManager", pos="580,200!"];
+
+  PG1 [label="Patch\nGrabber", pos="260,120!"];
+  IT1 [label="Image\nTagger", pos="420,120!"];
+  SM1 [label="Sensor\nModule", pos="580,120!"];
+
+  // Primary flow
+  SH  -> IG1;
+  IG1 -> TM1;
+  TM1 -> TM2;
+  TM2 -> PG1;
+
+  // Image Tagger links
+  IG1 -> IT1 [dir=forward, arrowhead=normal, arrowsize=1.0, color="#000000", tailport=e, headport=w, headclip=false, tailclip=false];
+  IT1 -> SM1;
+
+  // Patch Grabber to Sensor Module (curve below IT1, keep arrowhead)
+  PG1 -> SM1 [pos="s,260,102 300,90 340,80 400,78 460,80 520,90 e,580,102", dir=forward, arrowhead=normal, arrowsize=0.7, color="#000000", headclip=false, tailclip=false, tailport=s, headport=s];
+
+  // Attention Tracker dotted links (no arrowheads)
+  AT  -> IT1 [dir=none, style=dotted, color="#666666", penwidth=1.4, constraint=false, arrowhead=none, arrowtail=none];
+  AT  -> PG1 [dir=none, style=dotted, color="#666666", penwidth=1.4, constraint=false, arrowhead=none, arrowtail=none];
 }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!-- This HTML file was generated from ./docs/{{ page.path }}; do NOT edit. -->
+<html lang="en">
+  {%- include head.html -%}
+  <body>
+    {%- unless page.no_nav -%}
+      {%- include header.html -%}
+    {%- endunless -%}
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+  </body>
+</html>
