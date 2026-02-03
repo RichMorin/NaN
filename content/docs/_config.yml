@@ -1,0 +1,13 @@
+# Jekyll config for GitHub Pages
+# Use relative links in content so the site works under /NaN or a custom domain.
+title: "NaN — Notes and Notions"
+url: "https://richmorin.github.io"
+baseurl: "/NaN"
+repository: RichMorin/NaN
+markdown: kramdown
+theme: minima
+
+# Header nav order (higher-level pages only)
+header_pages:
+  - index.md
+  - AI_assisted_development/index.md
