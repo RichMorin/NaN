@@ -1,0 +1,19 @@
+<header class="site-header" role="banner">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="{{ "/" | relative_url }}" style="display:block;margin-bottom:0.35rem;">{{ site.title | escape }}</a>
+    <nav class="site-nav" style="float:none;display:block;clear:both;">
+      <div class="trigger">
+        {%- assign nav_pages = "" | split: "" -%}
+        {%- for path in site.header_pages -%}
+          {%- assign my_page = site.pages | where: "path", path | first -%}
+          {%- if my_page and my_page.url != page.url and my_page.url != "/" -%}
+            {%- assign nav_pages = nav_pages | push: my_page -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- for p in nav_pages -%}
+          <a class="page-link" href="{{ p.url | relative_url }}">{{ p.title | escape }}</a>{% unless forloop.last %}<span class="nav-sep">/</span>{% endunless %}
+        {%- endfor -%}
+      </div>
+    </nav>
+  </div>
+</header>

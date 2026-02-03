@@ -1,0 +1,25 @@
+digraph Top {
+  graph [layout=neato, splines=true, bgcolor="transparent", fontname="Helvetica", overlap=false];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=12, color="#2c2c2c", fillcolor="#f2f7ff", pin=true];
+
+  // Column x positions: c1=100, c2=260, c3=420, c4=580
+  // Row y positions: r1=300, r2=200, r2b=140
+  AT  [label="Attention\nTracker", pos="340,300!"];
+  E1  [label="...\n", pos="100,200!"];
+  IG2 [label="Image\nGrabber", pos="260,200!"];
+  IT  [label="Image\nTagger", pos="420,200!"];
+  SM2 [label="Sensor\nModule", pos="580,200!"];
+
+  PG2 [label="Patch\nGrabber", pos="420,140!"];
+
+  // Dotted links from Attention Tracker (no arrowheads)
+  AT  -> IT  [dir=none, style=dotted, color="#666666", penwidth=1.4, constraint=false, tailport=s, headport=n, arrowhead=none, arrowtail=none];
+  AT  -> PG2 [dir=none, style=dotted, color="#666666", penwidth=1.4, constraint=false, pos="340.00,280.00 321.41,261.34 314.80,228.70 332.12,196.06 361.41,172.40 402.68,160.71 420.00,160.00", arrowhead=none, arrowtail=none];
+
+  // Visible edges
+  E1  -> IG2;
+  IG2 -> PG2;
+  IG2 -> IT;
+  IT  -> SM2;
+  PG2 -> SM2;
+}

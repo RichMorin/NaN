@@ -1,0 +1,6 @@
+example.svg:
+  depth: 45
+  c1: 0.2
+  c2: 0.8
+  height: 280
+  viewbox_height: 280

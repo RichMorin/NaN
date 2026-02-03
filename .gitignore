@@ -1,5 +1,7 @@
 _site/
 logs/
+.bundle/
+vendor/
 .jekyll-cache/
 .sass-cache/
 *.log

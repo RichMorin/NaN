@@ -1,0 +1,26 @@
+digraph Bottom {
+  graph [layout=neato, splines=true, bgcolor="transparent", fontname="Helvetica", overlap=false];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=12, color="#2c2c2c", fillcolor="#f2f7ff", pin=true];
+
+  // Column x positions: c1=100, c2=260, c3=420, c4=580
+  // Row y positions: r2=260, r3=200, r4=120
+  AT  [label="Attention\nTracker", pos="340,260!"];
+
+  SH  [label="Sensor\nHardware", pos="100,200!"];
+  IG1 [label="Image\nGrabber", pos="260,200!"];
+  TM1 [label="Temporal\nManager", pos="420,200!"];
+
+  TM2 [label="Transform\nManager", pos="100,120!"];
+  PG1 [label="Patch\nGrabber", pos="260,120!"];
+  SM1 [label="Sensor\nModule", pos="420,120!"];
+
+  // Visible edges
+  SH  -> IG1;
+  IG1 -> TM1;
+  TM1 -> TM2;
+  TM2 -> PG1;
+  PG1 -> SM1;
+
+  // Attention Tracker links (match first diagram styling)
+    AT  -> PG1 [dir=none, style=dotted, color="#666666", penwidth=1.4, constraint=false, tailport=s, headport=n, arrowhead=none, arrowtail=none];
+}
